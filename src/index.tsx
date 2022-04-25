@@ -25,7 +25,7 @@ createServer({
         {
           id: 2,
           title: 'Aluguel',
-          type: 'Withdraw',
+          type: 'withdraw',
           category: 'Casa',
           amount:1100 ,
           createdAt: new Date('2021-02-15 11:00:00')
@@ -36,8 +36,6 @@ createServer({
 
   routes(){
     this.namespace = 'api';
-
-
 
     this.get('/transactions', () => {
       return this.schema.all('transaction')
