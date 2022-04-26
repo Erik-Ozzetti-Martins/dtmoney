@@ -10,8 +10,8 @@ interface InputProps {
 }
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { type, placeholder, name, error = null, Label },
-  ref
+  { type, placeholder, name, error = null, Label , ...rest},
+  ref,
 ) => {
   return (
     <>
@@ -22,6 +22,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         ref={ref}
         type={type}
         placeholder={placeholder}
+        {...rest}
       />
       {!!error && <p>{error.message}</p>}
     </>
