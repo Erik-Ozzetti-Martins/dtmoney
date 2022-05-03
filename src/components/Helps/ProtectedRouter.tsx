@@ -5,7 +5,7 @@ interface ProtextedRouterPros {
   children: any;
 }
 
-export function ProtectedRouter({children}:ProtextedRouterPros) {
+export function ProtectedRouter({ children }: ProtextedRouterPros) {
   const { login } = useContextUser();
 
   return login ? children : <Navigate to="/" />;
