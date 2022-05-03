@@ -6,16 +6,11 @@ export const GlobalStyles = createGlobalStyle`
     --red:#E52E4D;
     --blue: #5429CC;
     --green:#33cc95 ;
-
     --blue-light: #6933FF;
-
     --text-title:#363F5F;
     --text-body:#969Cb3;
-
     --background:#f0f2f5;
     --shape:#FFFFFF;
-
-
   }
 
   * {
@@ -45,7 +40,9 @@ export const GlobalStyles = createGlobalStyle`
     opacity: 0.6;
     cursor: not-allowed;
   }
-
+  a {
+    text-decoration: none;
+  }
   html{
     @media(max-width:1080px){
       font-size: 93.75%;
