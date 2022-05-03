@@ -5,19 +5,37 @@ import Modal from "react-modal";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "./pages/auth/Login";
 import { Home } from "./pages/home/Home";
-
+import { UserStorage } from "./context/useContext";
+import { SendFrogotPasswordmail } from "./pages/auth/SendForgotPasswordMail";
+import { ProtectedRouter } from "./components/Helps/ProtectedRouter";
+import { ResetPassword } from "./pages/auth/ResetPassword";
+import { Not404 } from "./pages/not404/Not404";
 
 Modal.setAppElement("#root");
 export function App() {
- 
   return (
     <>
       <GlobalStyles />
       <BrowserRouter>
-      <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-        </Routes>
+        <UserStorage>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route
+              path="/sendForgotPassword"
+              element={<SendFrogotPasswordmail />}
+            />
+            <Route path="/password/reset" element={<ResetPassword />} />
+            <Route
+              path="/home"
+              element={
+                <ProtectedRouter>
+                  <Home />
+                </ProtectedRouter>
+              }
+            />
+            <Route path="*" element={<Not404 />} />
+          </Routes>
+        </UserStorage>
       </BrowserRouter>
     </>
   );
