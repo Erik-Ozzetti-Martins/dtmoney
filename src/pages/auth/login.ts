@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import media from "styled-media-query";
 
 const animeted = keyframes`
   from  {
@@ -22,22 +23,31 @@ export const Container = styled.div`
     justify-content: center;
     margin: 2rem;
   }
-  div {
+  & > div {
     width: 30rem;
     height: 30rem;
     margin-right: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: end;
     img {
-      height: 100%;
+      height: auto;
       width: 100%;
       mix-blend-mode: multiply;
     }
+    ${media.lessThan("small")`
+      height: auto;
+      margin-right: initial;
+      padding: 0 2rem;
+    `}
   }
-  div {
+  & > div {
+    flex-direction: column;
     form {
       width: 30rem;
       height: 30rem;
-      transition: all .3s ease-in-out;
-      animation:${animeted} .4s linear forwards;
+      transition: all 0.3s ease-in-out;
+      animation: ${animeted} 0.4s linear forwards;
       button {
         width: 100%;
         padding: 0 1.5rem;
@@ -54,15 +64,37 @@ export const Container = styled.div`
           filter: brightness(0.9);
         }
       }
-      a {
-        display: block;
-        margin-top: 0.3rem;
-        color: var(--text-title);
+      .send-forgot-password {
+        display: flex;
+        height: 40px;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+        a {
+          display: block;
+          margin-top: 0.3rem;
+          color: var(--text-title);
+        }
       }
       p {
         margin-top: 0.5rem;
         color: red;
       }
+      ${media.lessThan("small")`
+    width: 100%;
+  `}
     }
+    ${media.lessThan("small")`
+    width: 100%;
+  `}
+  }
+  ${media.lessThan("medium")`
+    flex-direction: column;
+    padding: 0 2rem;
+  `}
+  .small {
+    margin-top: 1rem;
+    height: 220px;
+    width: 100%;
   }
 `;
