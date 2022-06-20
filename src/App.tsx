@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "./pages/auth/Login";
 import { Home } from "./pages/home/Home";
 import { UserStorage } from "./context/useContext";
-import { SendFrogotPasswordmail } from "./pages/auth/SendForgotPasswordMail";
+import { SendForgotPasswordEmail } from "./pages/auth/SendForgotPasswordEmail";
 import { ProtectedRouter } from "./components/Helps/ProtectedRouter";
 import { ResetPassword } from "./pages/auth/ResetPassword";
 import { Not404 } from "./pages/not404/Not404";
@@ -22,7 +22,7 @@ export function App() {
             <Route path="/" element={<Login />} />
             <Route
               path="/sendForgotPassword"
-              element={<SendFrogotPasswordmail />}
+              element={<SendForgotPasswordEmail />}
             />
             <Route path="/password/reset" element={<ResetPassword />} />
             <Route
