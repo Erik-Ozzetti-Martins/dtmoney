@@ -34,6 +34,7 @@ export function ResetPassword() {
         <img src={money} alt="" />
       </div>
       <form onSubmit={handleSubmit(handleSignIn)}>
+        <h2>Nova senha</h2>
         <Input
           type="password"
           Label="password"
