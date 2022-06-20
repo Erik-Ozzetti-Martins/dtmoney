@@ -9,7 +9,7 @@ import {
 import { Input } from "../Form/Input";
 //ref={animeForm}
 
-const RegisterBase: ForwardRefRenderFunction<HTMLFormElement> = (_, ref) => {
+const RegisterBase: ForwardRefRenderFunction<HTMLFormElement> = () => {
   const { userRegister, error } = useContextUser();
 
   const { register, handleSubmit, formState } = useForm<CreateInFormData>({
@@ -26,7 +26,7 @@ const RegisterBase: ForwardRefRenderFunction<HTMLFormElement> = (_, ref) => {
     });
   };
   return (
-    <form onSubmit={handleSubmit(handleCreatedIn)} ref={ref}>
+    <form onSubmit={handleSubmit(handleCreatedIn)}>
       <h2>Criar Conta</h2>
       <Input
         type="text"
