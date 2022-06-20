@@ -6,7 +6,7 @@ import { Input } from "../../components/Form/Input";
 import { useContextUser } from "../../context/useContext";
 import { Container } from "./login";
 import money from "../../assets/money.gif";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 
 import { Register } from "../../components/register/Register";
@@ -27,14 +27,11 @@ export function Login() {
   const { register, handleSubmit, formState } = useForm<SignInFormData>({
     resolver: yupResolver(signInFormSchema),
   });
+
   const { errors } = formState;
   const handleLogin = (login: string) => {
     setLogin(login);
   };
-
-  const animeForm: React.MutableRefObject<any> = useRef();
-
- 
 
   const handleSignIn: SubmitHandler<SignInFormData> = async (
     values: SignInFormData
@@ -49,7 +46,7 @@ export function Login() {
       </div>
       <div>
         {login === "login" ? (
-          <form onSubmit={handleSubmit(handleSignIn)} ref={animeForm}>
+          <form onSubmit={handleSubmit(handleSignIn)}>
             <h2>Login</h2>
             <Input
               type="email"
@@ -60,23 +57,27 @@ export function Login() {
             />
             <Input
               type="password"
-              Label="Password"
+              Label="Senha"
               placeholder="senha"
               error={errors.password}
               {...register("password")}
             />
-            <Link  style={{marginLeft: '310px'}} to="/sendForgotPassword">Esqueci senha</Link>
+            <div className="send-forgot-password">
+              <Link to="/sendForgotPassword">Esqueci senha</Link>
+            </div>
               <button type="submit"> Login</button>
             <p>{error}</p>
           </form>
         ) : (
-         <Register  ref={animeForm}/>
+          <Register />
         )}
+        <div className="small">
         {login === "login" ? (
-          <small onClick={() => handleLogin("created")}>criar uma conta </small>
+          <small className="" onClick={() => handleLogin("created")}>criar uma conta </small>
         ) : (
-          <small onClick={() => handleLogin("login")}>ja tem uma conta</small>
+          <small className="" onClick={() => handleLogin("login")}>ja tem uma conta</small>
         )}
+        </div>
       </div>
     </Container>
   );
