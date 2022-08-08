@@ -28,9 +28,9 @@ export function App() {
             <Route
               path="/home"
               element={
-                <ProtectedRouter>
+                
                   <Home />
-                </ProtectedRouter>
+                
               }
             />
             <Route path="*" element={<Not404 />} />
