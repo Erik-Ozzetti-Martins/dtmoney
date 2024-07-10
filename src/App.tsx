@@ -3,13 +3,16 @@ import { GlobalStyles } from "./styles/global";
 import Modal from "react-modal";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login } from "./pages/auth/Login";
-import { Home } from "./pages/home/Home";
-import { UserStorage } from "./context/useContext";
-import { SendForgotPasswordEmail } from "./pages/auth/SendForgotPasswordEmail";
-import { ProtectedRouter } from "./components/Helps/ProtectedRouter";
-import { ResetPassword } from "./pages/auth/ResetPassword";
-import { Not404 } from "./pages/not404/Not404";
+
+
+
+import { ViewLogin } from "./Presentation/views/auth/login/LoginView";
+import { ProtectedRouter } from "./Presentation/Shared/components/Helps/ProtectedRouter";
+import { SendForgotPasswordEmailView } from "./Presentation/views/auth/sendForgotPasswordEmail/SendForgotPasswordEmailView";
+import { ResetPasswordView } from "./Presentation/views/auth/resetPassword/ResetPasswordView";
+import { NotFoundViw } from "./Presentation/views/notFound/NotFoundView";
+import { UserStorage } from "./Domain/auth/useContext";
+import { HomeView } from "./Presentation/views/home/HomeView";
 
 Modal.setAppElement("#root");
 export function App() {
@@ -19,21 +22,21 @@ export function App() {
       <BrowserRouter>
         <UserStorage>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<ViewLogin />} />
             <Route
               path="/sendForgotPassword"
-              element={<SendForgotPasswordEmail />}
+              element={<SendForgotPasswordEmailView />}
             />
-            <Route path="/password/reset" element={<ResetPassword />} />
+            <Route path="/password/reset" element={<ResetPasswordView />} />
             <Route
               path="/home"
               element={
-                   <ProtectedRouter>
-                  <Home />
+                <ProtectedRouter>
+                  <HomeView />
                 </ProtectedRouter>
               }
             />
-            <Route path="*" element={<Not404 />} />
+            <Route path="*" element={<NotFoundViw />} />
           </Routes>
         </UserStorage>
       </BrowserRouter>
